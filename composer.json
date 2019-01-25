@@ -15,8 +15,9 @@
     "spiral/roadrunner": "^1.3",
     "symfony/psr-http-message-bridge": "^1.1"
   },
-  "require-dev": {
-    "laravel/framework": "5.7.*"
+  "suggest": {
+    "laravel/framework": "Can work with Laravel 4 and Laravel 5",
+    "laravel/lumen": "Can work with Lumen 4 and Lumen 5"
   },
   "autoload": {
     "psr-4": {
