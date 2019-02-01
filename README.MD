@@ -15,8 +15,9 @@ some components and can end up with bugs.
 <?php
 require __DIR__ . "/vendor/autoload.php";
 
-$bridge = new \updg\roadrunner\laravel\Bridge();
-$bridge->start();
+$integration = new \updg\roadrunner\laravel\LaravelIntegration();
+$bridge = new \updg\roadrunner\easy\RoadRunner($integration);
+$bridge->run();
 ```
 
 That's it! Now just run RoadRunner server.
