@@ -16,7 +16,7 @@ some components and can end up with bugs.
 require __DIR__ . "/vendor/autoload.php";
 
 $bridge = new \updg\roadrunner\laravel\Bridge();
-$bridge->start();
+$bridge->start(__DIR__);
 ```
 
 That's it! Now just run RoadRunner server.
