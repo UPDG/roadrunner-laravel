@@ -29,19 +29,19 @@ class Bridge
     private $appRegisterParameters;
 
 
-    private function prepareKernel()
+    private function prepareKernel(string $workerDir)
     {
         // Laravel 5 / Lumen
         $isLaravel = true;
-        if (file_exists('bootstrap/app.php')) {
-            $this->_app = require_once 'bootstrap/app.php';
+        if (file_exists($workerDir.'/bootstrap/app.php')) {
+            $this->_app = require_once $workerDir.'/bootstrap/app.php';
             if (substr($this->_app->version(), 0, 5) === 'Lumen') {
                 $isLaravel = false;
             }
         }
         // Laravel 4
-        if (file_exists('bootstrap/start.php')) {
-            $this->_app = require_once 'bootstrap/start.php';
+        if (file_exists($workerDir.'/bootstrap/start.php')) {
+            $this->_app = require_once $workerDir.'/bootstrap/start.php';
             $this->_app->boot();
             return $this->_app;
         }
@@ -75,9 +75,9 @@ class Bridge
         $this->_kernel = $kernel;
     }
 
-    public function start()
+    public function start(string $workerDir)
     {
-        $this->prepareKernel();
+        $this->prepareKernel($workerDir);
 
         $relay = new \Spiral\Goridge\StreamRelay(STDIN, STDOUT);
         $psr7 = new \Spiral\RoadRunner\PSR7Client(new \Spiral\RoadRunner\Worker($relay));
